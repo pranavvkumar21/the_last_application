@@ -1,0 +1,12 @@
+connection:
+  HOST: 127.0.0.1
+  port: 9222
+  user_data_dir: data/tla_user_data
+  headless: false
+  no_sandbox: true
+
+search:
+  base_url: "https://www.linkedin.com/jobs/search-results/"
+  query: "Software Engineer"
+  easy_apply: true
+  geo_id: 102299470

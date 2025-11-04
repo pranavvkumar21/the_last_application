@@ -1,0 +1,9 @@
+.env
+database/*
+sandbox
+src/__pycache__/*
+data/*
+.vscode/*
+
+!database/.gitkeep
+!/data/my_info.txt

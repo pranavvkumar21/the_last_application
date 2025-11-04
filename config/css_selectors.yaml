@@ -1,0 +1,12 @@
+job_card:
+  job_card: data-job-id
+  job_title: strong
+  job_company: .artdeco-entity-lockup__subtitle
+  job_location: .artdeco-entity-lockup__caption
+hirer: 
+  hirer_information: .hirer-card__hirer-information
+  hirer_profile_link: a
+job_details:
+  job_description_container: .jobs-description__container p
+  
+  
