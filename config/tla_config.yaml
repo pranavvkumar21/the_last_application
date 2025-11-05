@@ -10,6 +10,7 @@ search:
   query: "Software Engineer"
   easy_apply: true
   geo_id: 102299470
+  max_jobs: 15
 
 langchain:
   use_ai: true

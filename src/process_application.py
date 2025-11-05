@@ -133,7 +133,7 @@ async def loop_through_form(page, the_ai, default_answers={}, use_ai=True):
             if submit_btn:
                 await submit_btn.click()
                 print("Clicked Submit button.")
-                await asyncio.sleep(1)
+                await asyncio.sleep(4)
                 dismiss_btn = await page.query_selector(css_selectors["form_elements"]["dismiss_button"])
                 if dismiss_btn:
                     await dismiss_btn.click()

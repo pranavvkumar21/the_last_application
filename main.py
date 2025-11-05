@@ -64,6 +64,8 @@ async def main():
     job_cards = await page.find_all(css_selectors["job_card"]["job_card"])
     print(f"Found {len(job_cards)} job cards.")
     # exit()
+    applied_counter = 0
+    max_jobs = config["search"].get("max_jobs", 10)
     for job in job_cards:
 
         #scroll card into view so that card details load
@@ -96,6 +98,10 @@ async def main():
             result = db.save_application_qna(job_info["job_id"], question_answers)
             db.finalize_application(job_info["job_id"], result["application_id"], response_details="Easy Apply success")
             #save questions and update uploaded status in db
+            applied_counter += 1
+            if applied_counter >= max_jobs:
+                print(f"Reached maximum number of applications: {max_jobs}. Exiting.")
+                break
 
 
 if __name__ == "__main__":
