@@ -2,3 +2,5 @@ willing to relocate: yes
 have a drivers license: yes
 notice period: 1 month
 sc clearance: yes
+will i require sponsorship: yes
+am i authorised to work in the uk: no

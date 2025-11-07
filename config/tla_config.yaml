@@ -7,7 +7,7 @@ connection:
 
 search:
   base_url: "https://www.linkedin.com/jobs/search-results/"
-  query: "Software Engineer"
+  query: "robotics Engineer"
   easy_apply: true
   geo_id: 102299470
   max_jobs: 15

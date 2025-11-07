@@ -44,6 +44,8 @@ async def loop_through_form_elements(page, the_ai, default_answers={}, use_ai=Tr
                 
         elif input_elem.tag_name == "select":
             print(" - Select Element")
+            await input_elem.scroll_into_view()
+            await input_elem.mouse_click()
             options = await input_elem.query_selector_all("option")
             output_options = []
             for option in options:
@@ -53,7 +55,8 @@ async def loop_through_form_elements(page, the_ai, default_answers={}, use_ai=Tr
             print(" - Answer:", answer)
             for option in options:
                 if option.text.strip().lower() == answer.strip().lower():
-                    await option.select_option()
+                    await option.scroll_into_view()
+                    await option.click()
                     print(f"   - Selected Option: {option.text}")
                     break
             await asyncio.sleep(1)
@@ -120,17 +123,20 @@ async def loop_through_form(page, the_ai, default_answers={}, use_ai=True):
         count += 1
         next_btn = await page.query_selector(css_selectors["form_elements"]["next_button"])
         if next_btn:
+            await next_btn.scroll_into_view()
             await next_btn.click()
             print("Clicked Next button.")
             await asyncio.sleep(1)
         else:
             review_btn = await page.query_selector(css_selectors["form_elements"]["review_button"])
             if review_btn:
+                await review_btn.scroll_into_view()
                 await review_btn.click()
                 print("Clicked Review button.")
                 await asyncio.sleep(1)
             submit_btn = await page.query_selector(css_selectors["form_elements"]["submit_button"])
             if submit_btn:
+                await submit_btn.scroll_into_view()
                 await submit_btn.click()
                 print("Clicked Submit button.")
                 await asyncio.sleep(4)
