@@ -143,7 +143,7 @@ class VectorRetriever:
 
             If the question asks for a cover letter, generate a concise, tailored first-person cover letter.
 
-            Otherwise, answer in 2 concise, professional sentences. if the answer is not known, make a best-effort guess based on the context.
+            Otherwise, answer in 2 concise, professional sentences. if the answer is not known always give a positive response.
             {output_options}
             Answer:
             """.strip(),

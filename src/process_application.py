@@ -53,13 +53,14 @@ async def loop_through_form_elements(page, the_ai, default_answers={}, use_ai=Tr
                 output_options.append(option.text)
             inline_feedback = await check_inline_feedback(item)
             answer = await answer_questions(the_ai, label.text.strip("*"), output_options=output_options, default_answers=default_answers, inline_feedback=inline_feedback)
+            await input_elem.send_keys(answer)
             print(" - Answer:", answer)
-            for option in options:
-                if option.text.strip().lower() == answer.strip().lower():
-                    await option.scroll_into_view()
-                    await option.click()
-                    print(f"   - Selected Option: {option.text}")
-                    break
+            # for option in options:
+            #     if option.text.strip().lower() == answer.strip().lower():
+            #         await option.scroll_into_view()
+            #         await option.click()
+            #         print(f"   - Selected Option: {option.text}")
+            #         break
             await asyncio.sleep(1)
 
         elif input_elem.tag_name == "textarea":
@@ -93,6 +94,13 @@ async def answer_questions(the_ai, label, output_options=[],default_answers={}, 
             if inline_feedback:
                 label = f"{label}\nNote: {inline_feedback}"
             answer = the_ai.run_query(label, output_options=output_options)
+            if "how many "in label.lower():
+                #extract number from answer
+                import re
+                match = re.search(r'\d+', answer)
+                if match:
+                    answer = match.group(0)
+            print(f"AI generated answer for '{label}': {answer}")
         else:
             answer = default_answers.get("fallback_answer", "Prefer not to answer")
             print(f"AI disabled. Using fallback answer for '{label}': {answer}")

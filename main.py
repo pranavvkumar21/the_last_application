@@ -15,7 +15,7 @@ from pathlib import Path
 import argparse
 
 parser = argparse.ArgumentParser(description="Process job applications.")
-parser.add_argument("--search_query", type=str, help="Job search query", default=None)
+parser.add_argument("--search_query", type=str, help="Job search query", default="AI Engineer")
 args = parser.parse_args()
 load_dotenv()
 
@@ -49,15 +49,14 @@ async def main():
     )
     print("Connected to browser:", browser)
     keyword = args.search_query if args.search_query else config["search"]["query"]
-
-    page = await browser.get(
-        make_linkedin_url(
+    url = make_linkedin_url(
             base_url=config["search"]["base_url"],
             keyword=keyword,
             geo_id=config["search"]["geo_id"],
             easy_apply=config["search"]["easy_apply"]
         )
-    )
+    page = await browser.get(url)
+    print("Navigated to URL:", url)
     print("Finding jobs for query:", keyword)
     ## SETUP THE AI RETRIEVER
 

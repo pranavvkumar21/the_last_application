@@ -4,6 +4,7 @@ sandbox
 src/__pycache__/*
 data/*
 .vscode/*
+tmp
 
 !database/.gitkeep
 !/data/my_info.txt
