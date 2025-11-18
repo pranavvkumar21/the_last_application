@@ -5,7 +5,7 @@ src/__pycache__/*
 data/*
 .vscode/*
 tmp
-
+tla_dashboard/__pycache__/*
 !database/.gitkeep
 !/data/my_info.txt
 !/data/default_answers.example.json

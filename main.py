@@ -82,6 +82,12 @@ async def main():
             await job.scroll_into_view()
             await asyncio.sleep(1)
             title_elem = await job.query_selector(css_selectors["job_card"]["job_title"])
+            easy_apply_label = await job.query_selector(css_selectors["job_card"]["easy_apply_label"])
+            print("easy apply label", easy_apply_label.text if easy_apply_label else "N/A")
+            if easy_apply_label.text.lower() == "applied":
+                print(" - Skipping already applied job.")
+                continue
+
             await title_elem.click()
             await asyncio.sleep(2)  # Wait for job details to load
 

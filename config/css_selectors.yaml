@@ -6,6 +6,7 @@ job_card:
   job_company: .artdeco-entity-lockup__subtitle
   job_location: .artdeco-entity-lockup__caption
   easy_apply_button: button.jobs-apply-button
+  easy_apply_label: .job-card-job-posting-card-wrapper__footer-item
 hirer: 
   hirer_information: .hirer-card__hirer-information
   hirer_profile_link: a
